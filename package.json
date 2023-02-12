@@ -1,0 +1,24 @@
+{
+  "name": "durationts",
+  "version": "0.1.0",
+  "description": "A TypeScript library for parsing ISO 8601 formatted duration strings.",
+  "main": "./dist/lib",
+  "types": "./dist/lib/index.d.ts",
+  "scripts": {
+    "build": "rm -rf dist/lib && tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lifeline1337/durationts.git"
+  },
+  "author": "Jordan <hello@lifeline1337.dev> (LIFELINE)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lifeline1337/durationts/issues"
+  },
+  "homepage": "https://github.com/lifeline1337/durationts#readme",
+  "devDependencies": {
+    "typescript": "^4.9.5"
+  }
+}
