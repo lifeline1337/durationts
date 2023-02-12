@@ -1,6 +1,6 @@
 {
   "name": "durationts",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A TypeScript library for parsing ISO 8601 formatted duration strings.",
   "main": "./dist/lib",
   "types": "./dist/lib/index.d.ts",
