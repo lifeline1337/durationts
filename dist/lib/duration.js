@@ -1,4 +1,17 @@
 "use strict";
+/*
+
+  _____                  _   _          _______ _____
+ |  __ \                | | (_)        |__   __/ ____|
+ | |  | |_   _ _ __ __ _| |_ _  ___  _ __ | | | (___
+ | |  | | | | | '__/ _` | __| |/ _ \| '_ \| |  \___ \
+ | |__| | |_| | | | (_| | |_| | (_) | | | | |  ____) |
+ |_____/ \__,_|_|  \__,_|\__|_|\___/|_| |_|_| |_____/
+                                                      
+
+* Repository: https://github.com/lifeline1337
+* License: MIT
+*/
 Object.defineProperty(exports, "__esModule", { value: true });
 const Calendar = {
     Seconds: {
@@ -49,6 +62,7 @@ const Calendar = {
 };
 class Duration {
     /**
+     * Duration
      * @constructor
      * @param representation
      */
@@ -102,7 +116,6 @@ class Duration {
                 throw new Error(this.Error.UnexpectedFormat);
             }
         }
-        console.debug(this.seconds);
         if (isNaN(this.seconds)) {
             throw new Error(this.Error.Overflow);
         }
@@ -196,25 +209,59 @@ class Duration {
             return seconds;
         }
     }
-    // getters
+    /**
+     * inSeconds
+     * @method
+     * @returns {number} the druration value in seconds as a number
+     */
     inSeconds() {
         return this.seconds;
     }
+    /**
+     * inMinutes
+     * @method
+     * @returns {number} the druration value in minutes as a number
+     */
     inMinutes() {
         return this.seconds / Calendar.Seconds.per.Minute;
     }
+    /**
+     * inHours
+     * @method
+     * @returns {number} the druration value in hours as a number
+     */
     inHours() {
         return this.seconds / Calendar.Seconds.per.Hour;
     }
+    /**
+     * inDays
+     * @method
+     * @returns {number} the druration value in days as a number
+     */
     inDays() {
         return this.seconds / Calendar.Seconds.per.Day;
     }
+    /**
+     * inWeeks
+     * @method
+     * @returns {number} the druration value in weeks as a number
+     */
     inWeeks() {
         return this.seconds / Calendar.Seconds.per.Week;
     }
+    /**
+     * inMonths
+     * @method
+     * @returns {number} the druration value in months as a number
+     */
     inMonths() {
         return this.seconds / Calendar.Seconds.per.Month;
     }
+    /**
+     * inYears
+     * @method
+     * @returns {number} the druration value in days as a number
+     */
     inYears() {
         return this.seconds / Calendar.Seconds.per.Year;
     }

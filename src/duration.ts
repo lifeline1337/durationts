@@ -1,3 +1,17 @@
+/*
+
+  _____                  _   _          _______ _____ 
+ |  __ \                | | (_)        |__   __/ ____|
+ | |  | |_   _ _ __ __ _| |_ _  ___  _ __ | | | (___  
+ | |  | | | | | '__/ _` | __| |/ _ \| '_ \| |  \___ \ 
+ | |__| | |_| | | | (_| | |_| | (_) | | | | |  ____) |
+ |_____/ \__,_|_|  \__,_|\__|_|\___/|_| |_|_| |_____/ 
+                                                      
+
+* Repository: https://github.com/lifeline1337
+* License: MIT
+*/
+
 const Calendar = {
   Seconds: {
     per : {
@@ -48,15 +62,16 @@ const Calendar = {
 
 class Duration {
 
-  seconds: number = 0;
+  private seconds: number = 0;
 
-  Error: {UnexpectedFormat: string, NegativeValue: string, Overflow: string} = {
+  private Error: {UnexpectedFormat: string, NegativeValue: string, Overflow: string} = {
     UnexpectedFormat: "Unexpected duration format. Refer to ISO 8601.",
     NegativeValue: "Cannot create a negative duration.",
     Overflow: "Cannot represent a duration that large. Float overflow."
   }
 
   /**
+   * Duration
    * @constructor
    * @param representation
    */
@@ -93,8 +108,6 @@ class Duration {
 
     }
 
-    console.debug(this.seconds);
-
     if (isNaN(this.seconds)) {
       throw new Error(this.Error.Overflow);
     }
@@ -102,7 +115,7 @@ class Duration {
   }
 
   // Parsing
-  StandardParser (seconds: number, match): number {
+  private StandardParser (seconds: number, match): number {
 
     let cal = Calendar;
 
@@ -143,7 +156,7 @@ class Duration {
 
   }
 
-  StandardWeeksParser (seconds: number, match): number {
+  private StandardWeeksParser (seconds: number, match): number {
   
     let cal = Calendar;
 
@@ -162,8 +175,8 @@ class Duration {
 
   }
 
-  ExtendedParser (seconds:number, match): number {
-    
+  private ExtendedParser (seconds:number, match): number {
+
     let cal = Calendar;
 
     for (let groupIndex = 1; groupIndex < match.length; groupIndex++) {
@@ -210,9 +223,9 @@ class Duration {
 
   }
 
-  BasicParser = this.ExtendedParser;
+  private BasicParser = this.ExtendedParser;
 
-  DurationFormat = {
+  private DurationFormat = {
     Extended : {
       pattern : /^P(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})$/,
       parser : this.ExtendedParser
@@ -231,31 +244,65 @@ class Duration {
     }
   }
 
-  // getters
+  /**
+   * inSeconds
+   * @method
+   * @returns {number} the druration value in seconds as a number
+   */
   inSeconds (): number {
     return this.seconds;
   }
 
+  /**
+   * inMinutes
+   * @method
+   * @returns {number} the druration value in minutes as a number
+   */
   inMinutes (): number {
     return this.seconds / Calendar.Seconds.per.Minute;
   }
 
+  /**
+   * inHours
+   * @method
+   * @returns {number} the druration value in hours as a number
+   */
   inHours (): number {
     return this.seconds / Calendar.Seconds.per.Hour;
   }
 
+  /**
+   * inDays
+   * @method
+   * @returns {number} the druration value in days as a number
+   */
   inDays (): number {
     return this.seconds / Calendar.Seconds.per.Day;
   }
 
+  /**
+   * inWeeks
+   * @method
+   * @returns {number} the druration value in weeks as a number
+   */
   inWeeks (): number {
     return this.seconds / Calendar.Seconds.per.Week;
   }
 
+  /**
+   * inMonths
+   * @method
+   * @returns {number} the druration value in months as a number
+   */
   inMonths (): number {
     return this.seconds / Calendar.Seconds.per.Month;
   }
 
+  /**
+   * inYears
+   * @method
+   * @returns {number} the druration value in days as a number
+   */
   inYears (): number {
     return this.seconds / Calendar.Seconds.per.Year;
   }
